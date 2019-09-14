@@ -1,5 +1,5 @@
 podTemplate {
-    node('jenkins-slave') {
+    node('kube-jenkins-slave') {
         stage('Run shell') {
             sh 'echo hello world'
         }
