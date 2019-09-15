@@ -1,3 +1,3 @@
 Having fun !
 
-testing bitnami
+testing bitnami , now without hook
