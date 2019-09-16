@@ -1,12 +1,7 @@
-pipeline {
-    agent {
-        docker { image 'node:7-alpine' }
-    }
-    stages {
-        stage('Testing stage') {
-            steps {
-                sh 'node --version'
-            }
+podTemplate {
+    node(POD_LABEL) {
+        stage('Run shell') {
+            sh 'echo hello world'
         }
     }
 }
