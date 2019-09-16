@@ -1,7 +1,7 @@
 podTemplate {
     node('kube-jenkins-slave') {
         stage('Run shell') {
-            sh 'echo trigger test and hello world'
+            sh 'echo trigger tes failing and hello world'
         }
     }
 }
