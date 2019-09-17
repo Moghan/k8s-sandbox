@@ -7,7 +7,10 @@ podTemplate(
       containerTemplate(
     image: 'docker:17.11.0-ce', name: 'docker', command: 'cat', ttyEnabled: true,
   )],
-  volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')]
+  volumes: [
+    hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
+    hostPathVolume(hostPath: '/home/jenkins/agent/workspace/k8s-sandbox', mountPath: './')
+  ]
   ) {
     node('dockerpod') {
       stage('Continues Integration') {
@@ -22,6 +25,7 @@ podTemplate(
         container('my-node') {
           
           sh "npm --version"
+          sh 'ls -l'
         }
       }
       stage('Deployment')
