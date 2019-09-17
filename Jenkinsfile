@@ -10,11 +10,16 @@ podTemplate(
   volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')]
   ) {
     node('dockerpod') {
+      stage('Continues Integration - stage') {
+        cleanWs()
+        checkout scm
+      }
       stage('Test') {
         container('docker') {
           sh "docker version"
         }
         container('my-node') {
+          
           sh "npm --version"
         }
       }
