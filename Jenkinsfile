@@ -29,7 +29,14 @@ podTemplate(
       }
       stage('Deployment') {
         sh 'pwd'
-        sh 'ls -l'
+        dir('packages/client') {
+          sh 'pwd'
+          sh 'ls -l'
+          dir('build') {
+            sh 'pwd'
+            sh 'ls -l'
+          }
+        }
       }
     }
 }
