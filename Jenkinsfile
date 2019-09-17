@@ -9,7 +9,7 @@ podTemplate(
   )],
   volumes: [
     hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock'),
-    hostPathVolume(hostPath: './', mountPath: './')
+    hostPathVolume(hostPath: '/', mountPath: '/home')
   ]
   ) {
     node('dockerpod') {
