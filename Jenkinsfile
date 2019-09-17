@@ -15,7 +15,6 @@ podTemplate(
       stage('Continues Integration') {
         checkout scm
         container('my-node') {
-          
           sh "npm --version"
           sh 'cd packages/client && npm install && npm run build'
         }
