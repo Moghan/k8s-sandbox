@@ -13,7 +13,7 @@ podTemplate(
       stage('Continues Integration') {
         checkout scm
         sh 'pwd'
-        sh 'll'
+        sh 'ls -l'
       }
       stage('Test') {
         container('docker') {
