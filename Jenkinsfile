@@ -14,19 +14,22 @@ podTemplate(
     node('dockerpod') {
       stage('Continues Integration') {
         checkout scm
-        sh 'pwd'
-        sh 'ls -l'
+        container('my-node') {
+          
+          sh "npm --version"
+          sh 'cd packages/client && npm run build'
+        }
       }
       stage('Test') {
         container('docker') {
           sh "docker version"
-        }
-        container('my-node') {
-          
-          sh "npm --version"
           sh 'ls -l'
         }
+        
       }
-      stage('Deployment')
+      stage('Deployment') {
+        sh 'pwd'
+        sh 'ls -l'
+      }
     }
 }
