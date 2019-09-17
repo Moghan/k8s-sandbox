@@ -23,7 +23,10 @@ podTemplate(
       stage('Test') {
         container('docker') {
           sh "docker version"
-          sh 'ls -l'
+          dir('packages/client/build') {
+            sh 'pwd'
+            sh 'ls -l'
+          }
         }
         
       }
