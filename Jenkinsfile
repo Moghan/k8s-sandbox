@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                echo 'Hello from build'
+                echo 'test - Hello from build'
             }
         }
         stage('Test') { 
