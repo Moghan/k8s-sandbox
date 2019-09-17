@@ -12,6 +12,7 @@ podTemplate(
     node('dockerpod') {
       stage('Continues Integration') {
         checkout scm
+        sh 'pwd'
       }
       stage('Test') {
         container('docker') {
