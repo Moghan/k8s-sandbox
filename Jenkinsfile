@@ -17,7 +17,7 @@ podTemplate(
         container('my-node') {
           
           sh "npm --version"
-          sh 'cd packages/client && npm run build'
+          sh 'cd packages/client && npm install && npm run build'
         }
       }
       stage('Test') {
