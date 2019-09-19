@@ -12,7 +12,7 @@ podTemplate(
   ]
   ) {
     node('dockerpod') {
-      stage('Continues Integration') {
+      stage('Continues Integration (TEST)') {
         checkout scm
         container('my-node') {
           sh "npm --version"
