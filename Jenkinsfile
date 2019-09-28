@@ -10,31 +10,37 @@ pipeline {
     }
     stages {
         stage('Continues Integration (TEST)') {
-            checkout scm
-            container('node') {
-            sh "npm --version"
-            sh 'cd packages/client && npm install && npm run build'
+            steps {
+                checkout scm
+                container('node') {
+                    sh "npm --version"
+                    sh 'cd packages/client && npm install && npm run build'
+                }
             }
         }
         stage('Test') {
-            container('docker') {
-            sh "docker version"
-            dir('packages/client/build') {
-                sh 'pwd'
-                sh 'ls -l'
-            }
+            steps {
+                container('docker') {
+                    sh "docker version"
+                    dir('packages/client/build') {
+                        sh 'pwd'
+                        sh 'ls -l'
+                    }
+                }
             }
             
         }
         stage('Deployment') {
-            sh 'pwd'
-            dir('packages/client') {
-            sh 'pwd'
-            sh 'ls -l'
-            dir('build') {
+            steps {
                 sh 'pwd'
-                sh 'ls -l'
-            }
+                dir('packages/client') {
+                    sh 'pwd'
+                    sh 'ls -l'
+                    dir('build') {
+                        sh 'pwd'
+                        sh 'ls -l'
+                    }
+                }
             }
         }
     }
