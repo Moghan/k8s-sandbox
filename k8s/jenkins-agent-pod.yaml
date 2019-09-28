@@ -3,8 +3,6 @@ kind: Pod
 metadata:
   name: k8s-demo
   label: dockerpod
-  labels:
-    label: dockerpod
 spec:
   containers:
   - name: jnlp
