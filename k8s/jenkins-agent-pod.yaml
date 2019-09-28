@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   labels:
     name: jenkins-slave
+    label: dock
 spec:
   containers:
   - name: jnlp
