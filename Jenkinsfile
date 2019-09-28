@@ -3,10 +3,11 @@ pipeline {
         kubernetes {
             cloud "kubernetes"
             yamlFile "k8s/jenkins-agent-pod.yaml"
+            label "jenkins-slave"
         }
     }
     environment {
-        APP_NAME = "k8s-sandbox-demo"
+        APP_NAME = "k8s-demons"
     }
     stages {
         stage('Continues Integration (TEST)') {
