@@ -3,7 +3,6 @@ pipeline {
         kubernetes {
             cloud "kubernetes"
             yamlFile "k8s/jenkins-agent-pod.yaml"
-            label "lapod"
         }
     }
     environment {
