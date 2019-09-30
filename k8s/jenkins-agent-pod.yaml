@@ -10,9 +10,8 @@ spec:
   - name: docker
     image: docker:latest
     command:
-    - sleep
-    args:
-    - 99d
+    - cat
+    tty: true
     volumeMounts:
     - name: dockersock
       mountPath: /var/run/docker.sock
