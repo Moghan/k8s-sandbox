@@ -13,7 +13,18 @@ pipeline {
             steps {
                 checkout scm
                 sh 'cd packages/client'
-                sh 'll'
+                sh 'ls'
+            }
+        }
+        stage('Continues Integration (TEST)') {
+            steps {
+                container('docker') {
+                    sh "docker version"
+                    dir('packages/client/build') {
+                        sh 'pwd'
+                        sh 'ls -l'
+                    }
+                }
             }
         }
     }
