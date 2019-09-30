@@ -16,7 +16,7 @@ pipeline {
                 sh 'ls'
             }
         }
-        stage('Continues Integration (TEST)') {
+        stage('Container test') {
             steps {
                 container('docker') {
                     sh "docker version"
