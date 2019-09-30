@@ -9,6 +9,8 @@ spec:
       mountPath: /var/run/docker.sock
   - name: docker
     image: docker:latest
+    command:
+    - cat
     volumeMounts:
     - name: dockersock
       mountPath: /var/run/docker.sock
