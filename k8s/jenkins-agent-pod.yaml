@@ -1,22 +1,12 @@
 apiVersion: v1
 kind: Pod
-metadata:
-  labels:
-    label: dock
 spec:
   containers:
   - name: jnlp
     image: jenkinsci/jnlp-slave:3.29-1-alpine
-  - name: docker
-    image: docker:19.03.1
     volumeMounts:
-      - name: dockersock
-        mountPath: /var/run/docker.sock
-  - name: node
-    image: node:latest
-    volumeMounts:
-      - name: dockersock
-        mountPath: /var/run/docker.sock        
+    - name: dockersock
+      mountPath: /var/run/docker.sock
   volumes:
   - name: dockersock
     hostPath:
