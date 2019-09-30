@@ -12,7 +12,7 @@ pipeline {
         stage('Continues Integration (TEST)') {
             steps {
                 checkout scm
-                sh 'cd packages/client && npm install && npm run build'
+                sh 'cd packages/client'
                 sh 'll'
             }
         }
