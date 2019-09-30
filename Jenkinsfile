@@ -16,7 +16,7 @@ pipeline {
                 sh 'ls'
             }
         }
-        stage('Container test') {
+        stage('Docker test') {
             steps {
                 container('docker') {
                     sh "docker version"
@@ -27,5 +27,13 @@ pipeline {
                 }
             }
         }
+        stage('Node test') {
+            steps {
+                container('node') {
+                    sh "npm version"
+                }
+            }
+        }
+        
     }
 }
