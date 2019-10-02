@@ -1,7 +1,7 @@
 // ./components/my-form-component.js'
 import React from 'react';
 // import { connect } from 'react-redux';
-import { Control, Form } from 'react-redux-form';
+import { Control, Form, actions } from 'react-redux-form';
 
 class MyForm extends React.Component {
   handleSubmit(val) {
@@ -11,10 +11,17 @@ class MyForm extends React.Component {
 
   render() {
     return (
-      <Form model="user" onSubmit={(val) => this.handleSubmit(val)}>
-        <label>Your name?</label>
-        <Control.text model=".name" />
-        <button>Submit!</button>
+      <Form
+        model="user"
+        onSubmit={(val) => this.handleSubmit(val)}
+      >
+        <label htmlFor="user.firstName">First name</label>
+        <Control.text model="user.firstName" id="user.firstName" />
+
+        <label htmlFor="user.lastName">Last name</label>
+        <Control.text model="user.lastName" id="user.lastName" />
+
+        <button type="submit">Submit!</button>
       </Form>
     );
   }
