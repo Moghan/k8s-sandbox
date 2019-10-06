@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // import logo from './logo.svg';
 import './App.css';
 import dice from './utils/dice';
+import { Col } from './components/common/common';
 
 // import MyForm from './components/my-form';
 import CreateCommander from './components/create-commander';
-
+import Home from './components/Home';
+/*
 const getWidthString = (span) => {
   if (!span) return;
 
@@ -30,24 +33,39 @@ const Col = styled.div`
   @media only screen and (min-width: 1200px) {
     ${({ lg }) => lg && getWidthString(lg)};
   }
-`
+`*/
 
 const AppContainer = styled.div`
   display: flex;
+  background-color: black;
 
-  width: 80vw;
-  height: 60vh;
+  width: 100%;
+  height: 100vh;
+`
+
+const SignInContainer = styled.div`
+  display: flex;
+  background-color: grey;
   margin: auto auto;
-
+  padding: 1rem;
 `
 
 function App() {
   // dice();
+  // <Navigation />
   return (
-    <AppContainer>
-      <Col xs="1" md="4" />
-      <CreateCommander />      
-    </AppContainer>
+    <Router>
+      <div>
+        <Switch>
+          <Route path="/create-commander">
+            <CreateCommander />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
