@@ -2,6 +2,8 @@ import React from 'react';
 // import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Col } from '../common/common';
+import UnitList from '../Units/UnitList';
+import { connect } from 'react-redux';
 
 const PageContainer = styled.div`
     min-height: 100vh;
@@ -19,45 +21,27 @@ const ArmyContainer = styled.div`
     flex-wrap: wrap;
 `
 
-const Unit = styled.div`
-    padding: 20px;
-    margin: 20px;
-    box-sizing: border-box;
-    flex: 0 1 8rem;
-    background-color: red;
-    cursor: move;
-`
-
-const Home = () => {
-    const dragStart = () => {
-        console.log("dragStart");
-    }
-
-    const drop = () => {
-        console.log("drop");
-    }
-
-    const dragOver = (e) => {
-        e.preventDefault();
-        console.log("dragOver");
-    }
-
+const Home = ({units, pOne, pTwo}) => {
+    
     return (
         <PageContainer>
             <ArmyContainer>
-                <Unit draggable onDragStart={(e) => dragStart(e)} onDragOver={(e) => dragOver(e)} onDrop={drop} className="home">1</Unit>
-                <Unit draggable onDragStart={(e) => dragStart(e)} onDragOver={(e) => dragOver(e)} onDrop={drop} className="home">2</Unit>
-                <Unit draggable onDragStart={(e) => dragStart(e)} onDragOver={(e) => dragOver(e)} onDrop={drop} className="home">3</Unit>
-                <Unit onDragOver={dragOver} onDrop={drop} className="home">4</Unit>
+                <UnitList units={units}/>
             </ArmyContainer>
             <ArmyContainer>
-                <Unit className="home">1</Unit>
-                <Unit className="home">2</Unit>
-                <Unit className="home">3</Unit>
-                <Unit className="home">4</Unit>
+                <UnitList units={units}/>
             </ArmyContainer>
         </PageContainer>
     );
 }
 
-export default Home;
+const stateToProps = ({battleEngine}) => {
+    console.log("state", battleEngine);
+    return ({
+        units: battleEngine.units,
+        pOne: battleEngine.pOne,
+        pTwo: battleEngine.pTwo        
+    });
+}
+  
+export default connect(stateToProps)(Home);
