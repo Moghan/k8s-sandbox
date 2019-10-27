@@ -4,13 +4,13 @@ import styled from 'styled-components';
 import { Col } from '../common/common';
 import UnitList from '../Units/UnitList';
 import { connect } from 'react-redux';
+import Battlefield from '../Battlefield';
 
 const PageContainer = styled.div`
     min-height: 100vh;
     background-color: green;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 `
 
 const ArmyContainer = styled.div`
@@ -21,26 +21,30 @@ const ArmyContainer = styled.div`
     flex-wrap: wrap;
 `
 
-const Home = ({units, pOne, pTwo}) => {
+const Home = ({units, p1Units, p2Units}) => {
     
     return (
         <PageContainer>
             <ArmyContainer>
-                <UnitList units={units}/>
+                <UnitList units={p1Units}/>
             </ArmyContainer>
+            <Battlefield>battlefield</Battlefield>
             <ArmyContainer>
-                <UnitList units={units}/>
+                <UnitList units={p2Units}/>
             </ArmyContainer>
         </PageContainer>
     );
 }
 
-const stateToProps = ({battleEngine}) => {
-    console.log("state", battleEngine);
+const stateToProps = ({battleEngine: be}) => {
+    // console.log("state", be);
+    const p1Units = be.units.filter((u) => u.armyId === 1);
+    const p2Units = be.units.filter((u) => u.armyId === 2);
+
     return ({
-        units: battleEngine.units,
-        pOne: battleEngine.pOne,
-        pTwo: battleEngine.pTwo        
+        units: be.units,
+        p1Units,
+        p2Units
     });
 }
   

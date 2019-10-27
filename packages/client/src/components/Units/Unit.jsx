@@ -50,6 +50,7 @@ const Unit = ({unit, setTarget}) => {
     const drop = (e) => {
         const unit = parseInt(e.dataTransfer.getData("text"));
         const target = parseInt(e.target.id);
+        if(!target) return;
         console.log("u", unit, "t", target);
         setTarget(unit, target);
     }
